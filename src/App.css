@@ -39,3 +39,27 @@
   font-size: 25px;
   margin-left: -3%;
 }
+
+.songs {
+  margin-left: 3%;
+  margin-top: 4%;
+  font-size: 20px;
+  border: RGB(183, 183, 242) solid 2px;
+  width: 40%;
+  border-radius: 20px;
+  padding-left: 18px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.songContainer {
+  cursor: pointer;
+}
+
+.Popup-Content {
+  height: 90%;
+  border-radius: 22px;
+  padding-left: 3%;
+  padding-top: 3%;
+  padding-right: 3%;
+}
