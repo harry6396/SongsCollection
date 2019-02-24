@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import Popup from "reactjs-popup";
+import Loader from 'react-loader-spinner'
+
 
 class App extends Component {
   constructor(props){
@@ -26,7 +28,7 @@ class App extends Component {
     }
 
     fetchSongs(){
-      fetch("http://127.0.0.1:5000/")
+      fetch("https://afternoon-anchorage-53123.herokuapp.com/")
       .then(res => res.json())
       .then(
         (result) => {
@@ -42,7 +44,7 @@ class App extends Component {
     }
 
     searchSongs(searchKeyword){
-      fetch("http://127.0.0.1:5000/"+searchKeyword)
+      fetch("https://afternoon-anchorage-53123.herokuapp.com/"+searchKeyword)
       .then(res => res.json())
       .then(
         (result) => {
@@ -65,7 +67,9 @@ class App extends Component {
         <input type="text" className="App-Search" placeholder="Search song" onKeyDown={this._handleKeyPress}/>
         <div className="fa fa-search search-icon"></div>
         </div>
-        <div className="songContainer">{Object.keys(this.state.songsDetails).map(key => (
+        {Object.keys(this.state.songsDetails).length>0?
+        <div className="songContainer">
+          {Object.keys(this.state.songsDetails).map(key => (
           <Popup trigger={
             <div className="songs">
             <div>Song Name:- {this.state.songsDetails[key][0]}</div>
@@ -74,7 +78,7 @@ class App extends Component {
             <div>Song Rank:- {this.state.songsDetails[key][15]}</div>
             </div>
             } position="right center">
-            <div><div>Song Name:- {this.state.songsDetails[key][0]}</div>
+            <div className="Popup-Content"><div>Song Name:- {this.state.songsDetails[key][0]}</div>
             <div>Artist:- {this.state.songsDetails[key][1]}</div>
             <div>Danceability:- {this.state.songsDetails[key][2]}</div>
             <div>Energy:- {this.state.songsDetails[key][3]}</div></div>
@@ -91,7 +95,7 @@ class App extends Component {
             <div>Duration:- {this.state.songsDetails[key][14]}</div>
             <div>Song Rank:- {this.state.songsDetails[key][15]}</div>
             </Popup>
-          ))}</div>
+          ))}</div>:<div className="Loader"><Loader type="Circles" color="#somecolor" height={80} width={80}/></div>}
       </div>
     );
   }
