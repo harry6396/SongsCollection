@@ -19,10 +19,12 @@ class App extends Component {
 
     _handleKeyPress = (e) => {
       if (e.key === 'Enter') {
+        this.setState({songsDetails:[]});
         this.searchSongs(e.target.value);
         console.log(this.state.songsDetails);
       }
       else if(e.key === 8){
+        this.setState({songsDetails:[]});
         this.fetchSongs();
       }
     }
