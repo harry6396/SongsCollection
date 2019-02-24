@@ -28,7 +28,7 @@ class App extends Component {
     }
 
     fetchSongs(){
-      fetch("https://afternoon-anchorage-53123.herokuapp.com/")
+      fetch("https://afternoon-anchorage-53123.herokuapp.com")
       .then(res => res.json())
       .then(
         (result) => {
